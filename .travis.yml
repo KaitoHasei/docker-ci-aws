@@ -1,0 +1,7 @@
+sudo: required
+services:
+  - docker
+before-install:
+  - docker build -f Dockerfile.dev -t kaitohasei/docker-ci-aws .
+scripts:
+  - docker run -e CI=true kaitohasei/docker-ci-aws npm run test -- --coverage
